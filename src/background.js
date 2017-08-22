@@ -10,9 +10,9 @@ ruleMatcher = new RuleMatcher(rules);
 chrome.webRequest.onBeforeRequest.addListener(
     function(details) {
         return ruleMatcher.redirectOnMatch(details);
-    }, 
+    },
     {
         urls : ["<all_urls>"]
-    }, 
+    },
     ["blocking"]
 );

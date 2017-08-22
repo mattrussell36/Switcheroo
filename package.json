@@ -1,0 +1,34 @@
+{
+  "name": "switcheroo",
+  "version": "1.0.0",
+  "description": "Switcheroo ==========",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "node_modules/.bin/webpack --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattrussell36/Switcheroo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattrussell36/Switcheroo/issues"
+  },
+  "homepage": "https://github.com/mattrussell36/Switcheroo#readme",
+  "dependencies": {
+    "vue": "^2.4.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.22.0",
+    "vue-loader": "^13.0.4",
+    "vue-template-compiler": "^2.4.2",
+    "webpack": "^2.3.2"
+  }
+}

@@ -3,14 +3,17 @@
 	<head>
 		<title>Switcheroo Redirector</title>
 		<link rel="stylesheet" type="text/css" href="styles.css">
-		<script type="text/javascript" src="lib/angular.js"></script>
+		<!-- <script type="text/javascript" src="lib/angular.js"></script>
 		<script type="text/javascript" src="lib/underscore.js"></script>
 		<script type="text/javascript" src="RulesService.js"></script>
 		<script type="text/javascript" src="app.js"></script>
-		<script type="text/javascript" src="RulesController.js"></script>
+		<script type="text/javascript" src="RulesController.js"></script> -->
 	</head>
 	<body>
-		<div id="container" ng-controller="RulesController">
+		<div id="root">Loading...</div>
+		<script type="text/javascript" src="RulesService.js"></script>
+		<script type="text/javascript" src="index.bundle.js"></script>
+		<!-- <div id="container" ng-controller="RulesController">
 			<div id="headings">
 				<span class="from">From</span><span class="seperator">&nbsp;</span><span class="to">To</span>
 			</div>
@@ -41,6 +44,6 @@
 					<input id="removeAllRulesButton" type="button" value="Remove All" name="RemoveAll" ng-click="clear()" />
 				</div>
 			</form>
-		</div>
+		</div> -->
 	</body>
 </html>
