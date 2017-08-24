@@ -1,13 +1,90 @@
-body{width:650px; font-family: sans-serif;}
-a, span {padding: 5px;}
-ul { list-style-type: none; padding: 0; margin: 0 0 5px 0;}
-#new-rule input[type=text], .edit-rule input[type=text]{width:220px; margin: 0 5px;}
-.from, .to { font-family: monospace; width: 223px; display: inline-block; }
-.seperator { font-weight: bold; color: red; }
-#headings span { font-family: Arial; font-weight: bold; color: #def; padding: 5px 10px;}
-#no-rules { padding: 10px; color: #666; }
-.switcheroo {color: red;}
-#removeAllRulesButton { margin: 10px; }
-#new-rule, .edit-rule { margin-left: 3px; }
-.edit-rule .seperator {padding-right: 18px;}
-#headings { background-color: #69F; border-radius: 5px 5px 0 0; }
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    width:650px;
+    font-family: sans-serif;
+    line-height: 1.6;
+    font-size: 1.2rem;
+}
+
+h1,h2,h3 {
+    margin-bottom: 0.6rem;
+}
+
+.head-table {
+    margin-bottom: 5px;
+}
+.head-table button {
+    float: right;
+    margin-left: 5px;
+}
+
+.head-table .col-from {
+    width: 100%;
+}
+
+table {
+    display: block;
+    width: 100%;
+    text-align: left;
+    table-layout: fixed;
+}
+
+tr {
+    width: 100%;
+}
+
+th, td {
+    padding: 3px;
+}
+
+table input[type="text"] {
+    display: block;
+    width: 100%;
+}
+
+.col-checkbox,
+.col-arrow {
+    width: 20px;
+}
+
+.col-action {
+    width: 64px;
+}
+
+.path-table tr > :last-child button {
+    display: block;
+    width: 100%;
+}
+
+.col-from,
+.col-to {
+    width: 273px;
+}
+
+.path {
+    display: block;
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.arrow {
+    display: block;
+    width: 0;
+    height: 0;
+    padding: 0;
+    border-left: 4px solid black;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    margin-left: 6px;
+}

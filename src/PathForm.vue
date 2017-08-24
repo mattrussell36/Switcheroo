@@ -1,9 +1,11 @@
 <template>
-    <form @submit.prevent="add">
-        <input v-model="from" type="text">
-        <input v-model="to" type="text">
-        <button type="submit">Add</button>
-    </form>
+    <tr>
+        <td></td>
+        <td><input @keyup.13="add" v-model="from" type="text" placeholder="From path"></td>
+        <td><span class="arrow"></span></td>
+        <td><input @keyup.13="add" v-model="to" type="text" placeholder="To path"></td>
+        <td><button @click="add" type="submit">Add</button></td>
+    </tr>
 </template>
 <script>
 import { EventBus } from './EventBus';
