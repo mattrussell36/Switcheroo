@@ -10407,7 +10407,7 @@ if (false) {(function () {
             this.$set(this.groups, payload.name, {
                 paths: newPaths,
                 active: payload.checked,
-                open: this.groups.open
+                open: this.groups[payload.name].open
             });
         });
 
@@ -10614,15 +10614,10 @@ var _App = __webpack_require__(3);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _EventBus = __webpack_require__(0);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = new _vue2.default({
   el: '#root',
-  components: {
-    App: _App2.default
-  },
   render: function render(createElement) {
     return createElement(_App2.default);
   }

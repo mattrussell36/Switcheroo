@@ -68,7 +68,7 @@ export default {
             this.$set(this.groups, payload.name,  {
                 paths: newPaths,
                 active: payload.checked,
-                open: this.groups.open,
+                open: this.groups[payload.name].open,
             });
         });
 
