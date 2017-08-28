@@ -88,3 +88,7 @@ table input[type="text"] {
     border-bottom: 4px solid transparent;
     margin-left: 6px;
 }
+
+input.error {
+    border-color: red;
+}

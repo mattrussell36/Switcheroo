@@ -10532,22 +10532,60 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     props: ['name'],
     data() {
         return {
-            from: '',
-            to: ''
+            fromValue: '',
+            toValue: '',
+            fromState: true,
+            toState: true
         };
     },
+    watch: {
+        fromValue() {
+            this.validate();
+        },
+        toValue() {
+            this.validate();
+        }
+    },
     methods: {
+        validate() {
+            this.fromState = this.fromValue.length ? true : false;
+            this.toState = this.toValue.length ? true : false;
+
+            if (!this.fromState || !this.toState) {
+                return false;
+            }
+        },
         add() {
+            if (!this.validate()) {
+                return;
+            }
+
             __WEBPACK_IMPORTED_MODULE_0__EventBus__["EventBus"].$emit('AddPath', {
                 group: this.name,
-                from: this.from,
-                to: this.to,
+                from: this.fromValue,
+                to: this.toValue,
                 active: false
             });
         }
@@ -11019,15 +11057,18 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.from),
-      expression: "from"
+      value: (_vm.fromValue),
+      expression: "fromValue"
     }],
+    class: {
+      error: !_vm.fromState
+    },
     attrs: {
       "type": "text",
       "placeholder": "From path"
     },
     domProps: {
-      "value": (_vm.from)
+      "value": (_vm.fromValue)
     },
     on: {
       "keyup": function($event) {
@@ -11036,22 +11077,25 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       },
       "input": function($event) {
         if ($event.target.composing) { return; }
-        _vm.from = $event.target.value
+        _vm.fromValue = $event.target.value
       }
     }
   })]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('td', [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.to),
-      expression: "to"
+      value: (_vm.toValue),
+      expression: "toValue"
     }],
+    class: {
+      error: !_vm.toState
+    },
     attrs: {
       "type": "text",
       "placeholder": "To path"
     },
     domProps: {
-      "value": (_vm.to)
+      "value": (_vm.toValue)
     },
     on: {
       "keyup": function($event) {
@@ -11060,7 +11104,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       },
       "input": function($event) {
         if ($event.target.composing) { return; }
-        _vm.to = $event.target.value
+        _vm.toValue = $event.target.value
       }
     }
   })]), _vm._v(" "), _c('td', [_c('button', {
