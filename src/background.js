@@ -1,18 +1,17 @@
-var ruleMatcher,
-    rulesService,
-    rules;
+import RuleMatcher from './RuleMatcher';
+import RulesService from './RulesService';
 
-rulesService = RulesServiceFactory.getRulesService();
-rules = rulesService.get();
-
-ruleMatcher = new RuleMatcher(rules);
+const service = RulesService.getRulesService();
+const rules = service.get();
+window.rules = rules;
+const ruleMatcher = new RuleMatcher(rules);
 
 chrome.webRequest.onBeforeRequest.addListener(
     function(details) {
         return ruleMatcher.redirectOnMatch(details);
     },
     {
-        urls : ["<all_urls>"]
+        urls : ['<all_urls>']
     },
-    ["blocking"]
+    ['blocking']
 );

@@ -3,11 +3,12 @@ const webpack = require('webpack');
 
 module.exports = {
     entry: {
-        index: './src/index.js'
+        index: './src/index.js',
+        background: './src/background.js',
     },
     output: {
-        filename: 'index.bundle.js',
-        path: path.resolve(__dirname, 'src')
+        filename: '[name].bundle.js',
+        path: path.resolve(__dirname, 'dist')
     },
     devtool: 'source-map',
     module: {

@@ -18,6 +18,10 @@ import { EventBus } from './EventBus';
 import PathList from './PathList.vue';
 import GroupTitle from './GroupTitle.vue';
 import GroupForm from './GroupForm.vue';
+import RulesService from './RulesService';
+
+const service = RulesService.getRulesService();
+
 export default {
     data() {
         return {
@@ -30,7 +34,11 @@ export default {
     },
 
     created() {
-        this.groups = chrome.extension.getBackgroundPage().rules;
+        const data = chrome.extension.getBackgroundPage().rules;
+        console.log(chrome.extension.getBackgroundPage());
+        if (data) {
+            this.groups = data;
+        }
 
         EventBus.$on('AddPath', payload => {
             this.groups[payload.group].paths.push({
@@ -89,7 +97,7 @@ export default {
     methods: {
         save() {
             console.log('SAVING', this.groups);
-            localStorage.setItem('data', JSON.stringify(this.groups));
+            service.set(this.groups);
         },
     },
 

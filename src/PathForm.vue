@@ -51,6 +51,8 @@ export default {
             if (!this.fromState || !this.toState) {
                 return false;
             }
+
+            return true;
         },
         add() {
             if (!this.validate()) {
