@@ -6,11 +6,18 @@
 	"browser_action": {
 		"default_icon": "switch-browser.png",
 		"default_title": "Add switcheroo rules.",
-		"default_popup": "switcheroo.html"
+		"default_popup": "index.html"
 	},
-	"permissions": ["webRequest", "webRequestBlocking", "<all_urls>", "tabs"],
+	"permissions": [
+        "webRequest",
+        "webRequestBlocking",
+        "<all_urls>",
+        "tabs"
+    ],
 	"background": {
-		"scripts": ["background.bundle.js"],
+		"scripts": [
+            "background.bundle.js"
+        ],
 		"persistent": true
 	}
 }
