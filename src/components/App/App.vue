@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>{{ title }} !!!</h1>
+        <h1>Switcheroo</h1>
         <rule-table :rules="rules" />
         <rule-form />
     </div>
@@ -16,12 +16,6 @@ export default {
     data() {
         return {
             rules: [],
-
-            title: 'Switcheroo',
-            groups: null,
-            activeGroup: null,
-            showText: 'Show',
-            hideText: 'Hide',
         };
     },
 
@@ -33,9 +27,8 @@ export default {
         });
 
         EventBus.$on('RemoveRule', id => {
-            const rules = this.rules.filter(rule => id !== rule.id);
-
-            this.rules = rules;
+            const index = this.rules.findIndex(rule => rule.id === id);
+            this.rules.splice(index, 1);
         });
     },
 
