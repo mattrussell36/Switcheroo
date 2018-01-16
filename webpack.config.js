@@ -25,12 +25,7 @@ module.exports = {
                 exclude: /node_modules/,
                 use: [
                     {
-                        loader: 'babel-loader',
-                        options: {
-                            presets: [
-                                'es2015'
-                            ]
-                        }
+                        loader: 'babel-loader'
                     }
                 ]
             },
@@ -42,7 +37,8 @@ module.exports = {
     },
     resolve: {
         alias: {
-            'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
+            // Only using the .vue components which means we only need the runtime build.
+            'vue$': 'vue/dist/vue.runtime.esm.js'
         }
     },
     plugins: [

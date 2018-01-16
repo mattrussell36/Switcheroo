@@ -1,17 +1,29 @@
-import RuleMatcher from './RuleMatcher';
-import RulesService from './RulesService';
+import { get } from './Storage';
 
-const service = RulesService.getRulesService();
-const rules = service.get();
-window.rules = rules;
-const ruleMatcher = new RuleMatcher(rules);
+window.rules = get('rules') || [];
 
 chrome.webRequest.onBeforeRequest.addListener(
-    function(details) {
-        return ruleMatcher.redirectOnMatch(details);
-    },
-    {
-        urls : ['<all_urls>']
-    },
+    handleRequest,
+    { urls : ['<all_urls>'] },
     ['blocking']
 );
+
+function handleRequest({ initiator, url }) {
+    let regex;
+
+    /// Find the rule
+    const rule = rules.find(rule => {
+        if (!rule.active) {
+            return false;
+        }
+
+        regex = new RegExp(rule.from, 'g');
+        return regex.test(url);
+    });
+
+    if (rule) {
+        return {
+            redirectUrl: url.replace(regex, rule.to),
+        };
+    }
+}
