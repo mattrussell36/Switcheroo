@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
+
 const PATHS = {
     dist: path.join(__dirname, 'dist'),
     src: path.join(__dirname, 'src'),
@@ -10,8 +10,8 @@ const PATHS = {
 
 module.exports = {
     entry: {
-        index: './src/index.js',
-        background: './src/background.js',
+        index: path.join(PATHS.src, 'index.js'),
+        background: path.join(PATHS.src, 'background.js'),
     },
     output: {
         filename: '[name].bundle.js',
@@ -55,11 +55,12 @@ module.exports = {
             },
             {
                 from: path.join(PATHS.src, 'images'),
-                to: path.join(PATHS.dist, 'images')
+                to: path.join(PATHS.dist, 'images'),
+            },
+            {
+                from: path.join(PATHS.src, 'manifest.json'),
+                to: path.join(PATHS.dist, 'manifest.json'),
             }
         ]),
-        new ManifestPlugin({
-            seed: require('./src/manifest.json'),
-        }),
     ]
 }
