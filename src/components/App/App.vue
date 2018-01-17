@@ -33,12 +33,8 @@ export default {
     },
 
     watch: {
-        rules: {
-            handler() {
-                console.log('saving');
-                set('rules', this.rules);
-            },
-            deep: true,
+        rules() {
+            set('rules', this.rules);
         },
     },
 
